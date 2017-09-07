@@ -40,7 +40,13 @@ public class Calculate {
 	}
 	//convert improper fraction into mixed number
 	public static String toMixedNum (int numerator, int denominator) {
-		return 
+		return numerator/denominator+"_"+numerator%denominator+"/"+denominator;
 	}
-	
+	//convert binomial multiplication into standard form of a quadratic expression
+	public static String foil (int a, int b, int c, int d, String variable) {
+		return a*c+variable+"^2"+" + "+(a*d+b*c)+variable+" + "+b*d;
+	}
+	//determine whether or not integer is evenly divisible by another
+	public static boolean isDivisibleBy 
+	}
 }
