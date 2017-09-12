@@ -47,6 +47,11 @@ public class Calculate {
 		return a*c+variable+"^2"+" + "+(a*d+b*c)+variable+" + "+b*d;
 	}
 	//determine whether or not integer is evenly divisible by another
-	public static boolean isDivisibleBy 
+	public static boolean isDivisibleBy (int operand, int factor) {
+		if(operand%factor==0) {
+			return true;//what are these?
+		} else {
+			return false;
+		}
 	}
 }

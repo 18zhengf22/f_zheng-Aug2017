@@ -15,6 +15,7 @@ public class DoMath {
 		System.out.println(Calculate.toImproperFrac(5, 3, 4));
 		System.out.println(Calculate.toMixedNum(10, 7));
 		System.out.println(Calculate.foil(1, 1, 1, 1, "n"));
+		System.out.println(Calculate.isDivisibleBy(9, 3));
 
 	}
 
