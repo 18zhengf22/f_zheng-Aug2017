@@ -49,7 +49,7 @@ public class Calculate {
 	//determine whether or not integer is evenly divisible by another
 	public static boolean isDivisibleBy (int operand, int factor) {
 		if(operand%factor==0) {
-			return true;//what are these?
+			return true;
 		} else {
 			return false;
 		}
