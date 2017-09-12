@@ -54,4 +54,46 @@ public class Calculate {
 			return false;
 		}
 	}
+	//calculate absolute value
+	public static double absValue (double operand) {
+		if(operand>=0) {
+			return operand;
+		} else {
+			return operand*(-1);
+		}
+	}
+	//determine max out of two numbers
+	public static double max (double firstNumber, double secondNumber) {
+		if(firstNumber>secondNumber) {
+			return firstNumber;
+		} else {
+			return secondNumber;
+		}
+	}
+	//determine max out of three numbers
+	public static double max (double firstNumber, double secondNumber, double thirdNumber) {
+		if(firstNumber>secondNumber && firstNumber>thirdNumber) {
+			return firstNumber;
+		} else if(secondNumber>firstNumber && secondNumber>thirdNumber) {
+			return secondNumber;
+		} else {
+			return thirdNumber;
+		}
+	}
+	//determine min out of two numbers
+	public static int min (int firstNumber, int secondNumber) {
+		if(firstNumber<secondNumber) {
+			return firstNumber;
+		} else {
+			return secondNumber;
+		}
+	}
+	//round a number to 2 decimal places
+	public static double round2 (double numero) {
+		if(numero*1000%10<5) {
+			return (numero*1000-(numero*1000%10))/1000;
+		} else {
+			return (numero*1000-((numero*1000%10))+10)/1000;
+		}
+	}
 }
