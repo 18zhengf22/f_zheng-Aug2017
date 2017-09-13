@@ -21,6 +21,7 @@ public class DoMath {
 		System.out.println(Calculate.max(12.4, -1, 10));
 		System.out.println(Calculate.min(-2, 2));
 		System.out.println(Calculate.round2(7.777777));
+
 	}
 
 }
