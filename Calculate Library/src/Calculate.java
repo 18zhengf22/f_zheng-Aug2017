@@ -96,4 +96,5 @@ public class Calculate {
 			return (number*1000-((number*1000%10))+10)/1000;
 		}
 	}
+	//raise a value to a positive integer power
 }
