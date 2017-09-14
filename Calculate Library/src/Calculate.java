@@ -97,4 +97,5 @@ public class Calculate {
 		}
 	}
 	//raise a value to a positive integer power
+	public static 
 }
