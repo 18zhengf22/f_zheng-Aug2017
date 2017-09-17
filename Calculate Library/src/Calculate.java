@@ -97,5 +97,37 @@ public class Calculate {
 		}
 	}
 	//raise a value to a positive integer power
-	public static 
+	public static double exponent (double base, int exponent) {
+		double result = base;
+		for(int i = 1; i < exponent; i++) {
+			result *= base;
+		}
+		return result;
+	}
+	//factorial for integer
+	public static int factorial (int integer) {
+		int result = 1;
+		while(integer>1) {
+			result *= integer;
+			integer--;
+		}
+		return result; 
+	}
+	//determine if integer is prime
+	public static boolean isPrime (int integer) {
+		if(integer<2) {
+			return false;
+		}
+		for(int i = 2; i < integer; i++) {
+			if(isDivisibleBy(integer, i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	//find gcf of two positive integers
+	public static int gcf (int integer, int integer2) {
+		
+	}
+
 }
