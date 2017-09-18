@@ -127,7 +127,20 @@ public class Calculate {
 	}
 	//find gcf of two positive integers
 	public static int gcf (int integer, int integer2) {
-		
+		int i;
+		for(i = integer; !(isDivisibleBy(integer, i) && isDivisibleBy(integer2, i)); i--) {	
+		}
+		return i;
+	}
+	//square root of input
+	public static double sqrt (double operand) {
+		double guess = operand/2;
+		double result = 0;
+		while(result != 0.5*(operand/guess + guess)) {
+			result = 0.5*(operand/guess + guess);
+			guess = result;
+		}
+		return round2(result);
 	}
 
 }
