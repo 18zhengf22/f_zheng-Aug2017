@@ -89,7 +89,7 @@ public class Calculate {
 		}
 	}
 	//round a number to 2 decimal places
-	public static double round2 (double number) {
+	public static double round2 (double number) {//fix to work for negatives
 		if(number*1000%10<5) {
 			return (number*1000-(number*1000%10))/1000;
 		} else {
