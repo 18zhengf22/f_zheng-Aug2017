@@ -89,12 +89,18 @@ public class Calculate {
 		}
 	}
 	//round a number to 2 decimal places
-	public static double round2 (double number) {//fix to work for negatives
-		if(number*1000%10<5) {
-			return (number*1000-(number*1000%10))/1000;
-		} else {
-			return (number*1000-((number*1000%10))+10)/1000;
+	public static double round2 (double orig) {
+		double result = 0.0;
+		int tempInt = (int) (orig * 1000);
+		int roundNum = tempInt % 10;
+		tempInt = tempInt / 10;
+		if(roundNum>=5 && tempInt>0) {
+			tempInt++;
+		} else if(roundNum<=-5 && tempInt<0) {
+			tempInt--;
 		}
+		result = tempInt / 100.0;
+		return result;
 	}
 	//raise a value to a positive integer power
 	public static double exponent (double base, int exponent) {
