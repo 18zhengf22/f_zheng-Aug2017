@@ -104,6 +104,12 @@ public class Calculate {
 	}
 	//raise a value to a positive integer power
 	public static double exponent (double base, int exponent) {
+		if(exponent < 0) {
+			throw new IllegalArgumentException();
+		}
+		if(exponent == 0) {
+			return 1.0;
+		}
 		double result = base;
 		for(int i = 1; i < exponent; i++) {
 			result *= base;
@@ -112,6 +118,9 @@ public class Calculate {
 	}
 	//factorial for integer
 	public static int factorial (int integer) {
+		if(integer<0) {
+			throw new IllegalArgumentException();
+		}
 		int result = 1;
 		while(integer>1) {
 			result *= integer;
