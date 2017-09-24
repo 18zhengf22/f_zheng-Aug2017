@@ -48,6 +48,9 @@ public class Calculate {
 	}
 	//determine whether or not integer is evenly divisible by another
 	public static boolean isDivisibleBy (int operand, int factor) {
+		if(factor==0) {
+			throw new IllegalArgumentException();
+		}
 		if(operand%factor==0) {
 			return true;
 		} else {
@@ -149,6 +152,12 @@ public class Calculate {
 	}
 	//square root of input
 	public static double sqrt (double operand) {
+		if(operand<0) {
+			throw new IllegalArgumentException();
+		}
+		if(operand==0) {
+			return operand;
+		}
 		double guess = operand/2;
 		double result = 0;
 		while(result != 0.5*(operand/guess + guess)) {
@@ -156,6 +165,11 @@ public class Calculate {
 			guess = result;
 		}
 		return round2(result);
+	}
+	//use quadratic formula to solve for roots
+	public static String quadform (int a, int b, int c) {
+		
+	//make new min method for doubles
 	}
 
 }
