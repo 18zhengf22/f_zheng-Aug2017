@@ -168,8 +168,23 @@ public class Calculate {
 	}
 	//use quadratic formula to solve for roots
 	public static String quadform (int a, int b, int c) {
-		
-	//make new min method for doubles
+		double result = round2((-b + sqrt(discriminant(a, b, c)))/(2*a));
+		double result2 = round2((-b - sqrt(discriminant(a, b, c)))/(2*a));
+		if(discriminant(a, b, c) < 0) {
+			System.out.println("no real roots");
+		} else if(discriminant(a, b, c) == 0) {
+			return result;
+		} else {
+			return min(result, result2) + " and " + max(result, result2);
+		}
+	}	
+	//min method for doubles
+	public static double min (double firstNumber, double secondNumber) {
+		if(firstNumber<secondNumber) {
+			return firstNumber;
+		} else {
+			return secondNumber;
+		}
 	}
 
 }
