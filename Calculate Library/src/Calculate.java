@@ -1,24 +1,24 @@
 /*Frank Zheng
- * September 6, 2017
+ * September 6, 2017 - September 29, 2017
  * Our self written math library
  * It contains a series of methods to do basic math functions.
  */
 public class Calculate {
 	
-	//square the input
+	//accepts int, return the square of the input
 	public static int square (int operand) {
 		int squared = operand*operand;
 		return squared;
 	}
-	//cube the input
+	//accepts int, return the cube of the input
 	public static int cube (int operand) {
 		return operand*operand*operand;
 	}
-	//average the input of 2 values
+	//average the input of 2 doubles
 	public static double average (double operand, double operand2) {
 		return (operand+operand2)/2;
 	}
-	//average the input of 3 values
+	//average the input of 3 doubles
 	public static double average (double operand, double operand2, double operand3) {
 		return (operand+operand2+operand3)/3;
 	}
@@ -150,7 +150,7 @@ public class Calculate {
 		}
 		return i;
 	}
-	//square root of input
+	//square root the input
 	public static double sqrt (double operand) {
 		if(operand<0) {
 			throw new IllegalArgumentException();
@@ -179,7 +179,7 @@ public class Calculate {
 			return min(result, result2) + " and " + max(result, result2);
 		}
 	}	
-	//min method for doubles
+	//min method for doubles to determine the minimum out of inputted doubles
 	public static double min (double firstNumber, double secondNumber) {
 		if(firstNumber<secondNumber) {
 			return firstNumber;
