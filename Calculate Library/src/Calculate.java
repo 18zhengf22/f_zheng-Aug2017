@@ -5,48 +5,48 @@
  */
 public class Calculate {
 	
-	//accepts int, return the square of the input
+	//accepts int, returns int: the square of the input
 	public static int square (int operand) {
 		int squared = operand*operand;
 		return squared;
 	}
-	//accepts int, return the cube of the input
+	//accepts int, returns int: the cube of the input
 	public static int cube (int operand) {
 		return operand*operand*operand;
 	}
-	//average the input of 2 doubles
+	//accepts two doubles, returns double: the average of the input 
 	public static double average (double operand, double operand2) {
 		return (operand+operand2)/2;
 	}
-	//average the input of 3 doubles
+	//accepts three doubles, returns double: the average of the input
 	public static double average (double operand, double operand2, double operand3) {
 		return (operand+operand2+operand3)/3;
 	}
-	//convert angle measure given in radians into degrees
+	//accepts double, returns double: convert angle measure given in radians into degrees
 	public static double toDegrees (double operand) {
 		return operand*180/3.14159;
 	}
-	//convert angle measure given in degrees into radians
+	//accepts double, returns double: convert angle measure given in degrees into radians
 	public static double toRadians (double operand) {
 		return operand*3.14159/180;
 	}
-	//calculate the discriminant
+	//accepts three doubles, returns double: the discriminant
 	public static double discriminant (double a, double b, double c) {
 		return b*b-4*a*c;
 	}
-	//convert mixed number into improper fraction
+	//accepts three ints, returns String: convert mixed number into improper fraction
 	public static String toImproperFrac (int wholeNumber, int numerator, int denominator) {
 		return denominator*wholeNumber+numerator+"/"+denominator;
 	}
-	//convert improper fraction into mixed number
+	//accepts two ints, returns String: convert improper fraction into mixed number
 	public static String toMixedNum (int numerator, int denominator) {
 		return numerator/denominator+"_"+numerator%denominator+"/"+denominator;
 	}
-	//convert binomial multiplication into standard form of a quadratic expression
+	//accepts four ints and String, returns String: convert binomial multiplication into standard form of a quadratic expression
 	public static String foil (int a, int b, int c, int d, String variable) {
 		return a*c+variable+"^2"+" + "+(a*d+b*c)+variable+" + "+b*d;
 	}
-	//determine whether or not integer is evenly divisible by another
+	//accepts two ints, return boolean: determine whether or not integer is evenly divisible by another
 	public static boolean isDivisibleBy (int operand, int factor) {
 		if(factor==0) {
 			throw new IllegalArgumentException();
@@ -57,7 +57,7 @@ public class Calculate {
 			return false;
 		}
 	}
-	//calculate absolute value
+	//accepts double, returns double: the absolute value of the input
 	public static double absValue (double operand) {
 		if(operand>=0) {
 			return operand;
@@ -65,7 +65,7 @@ public class Calculate {
 			return operand*(-1);
 		}
 	}
-	//determine max out of two numbers
+	//accepts two doubles, returns double: the max out of two numbers
 	public static double max (double firstNumber, double secondNumber) {
 		if(firstNumber>secondNumber) {
 			return firstNumber;
@@ -73,7 +73,7 @@ public class Calculate {
 			return secondNumber;
 		}
 	}
-	//determine max out of three numbers
+	//accepts three doubles, return double: the max out of three numbers
 	public static double max (double firstNumber, double secondNumber, double thirdNumber) {
 		if(firstNumber>secondNumber && firstNumber>thirdNumber) {
 			return firstNumber;
@@ -83,7 +83,7 @@ public class Calculate {
 			return thirdNumber;
 		}
 	}
-	//determine min out of two numbers
+	//accepts two ints, returns int: the min out of two numbers
 	public static int min (int firstNumber, int secondNumber) {
 		if(firstNumber<secondNumber) {
 			return firstNumber;
@@ -91,7 +91,7 @@ public class Calculate {
 			return secondNumber;
 		}
 	}
-	//round a number to 2 decimal places
+	//accepts double, returns double: a number rounded to 2 decimal places
 	public static double round2 (double orig) {
 		double result = 0.0;
 		int tempInt = (int) (orig * 1000);
@@ -105,7 +105,7 @@ public class Calculate {
 		result = tempInt / 100.0;
 		return result;
 	}
-	//raise a value to a positive integer power
+	//accepts double and int, returns double: raise a value to a positive integer power
 	public static double exponent (double base, int exponent) {
 		if(exponent < 0) {
 			throw new IllegalArgumentException();
@@ -119,7 +119,7 @@ public class Calculate {
 		}
 		return result;
 	}
-	//factorial for integer
+	//accepts int, returns int: factorial for integer
 	public static int factorial (int integer) {
 		if(integer<0) {
 			throw new IllegalArgumentException();
@@ -131,7 +131,7 @@ public class Calculate {
 		}
 		return result; 
 	}
-	//determine if integer is prime
+	//accepts int, returns boolean: determine if integer is prime
 	public static boolean isPrime (int integer) {
 		if(integer<2) {
 			return false;
@@ -143,14 +143,14 @@ public class Calculate {
 		}
 		return true;
 	}
-	//find gcf of two positive integers
+	//accepts two ints, return int: the gcf of two positive integers
 	public static int gcf (int integer, int integer2) {
 		int i;
 		for(i = integer; !(isDivisibleBy(integer, i) && isDivisibleBy(integer2, i)); i--) {	
 		}
 		return i;
 	}
-	//square root the input
+	//accepts double, returns double: the square root of the input
 	public static double sqrt (double operand) {
 		if(operand<0) {
 			throw new IllegalArgumentException();
@@ -166,7 +166,7 @@ public class Calculate {
 		}
 		return round2(result);
 	}
-	//use quadratic formula to solve for roots
+	//accepts three ints, returns String: use quadratic formula to solve for roots
 	public static String quadform (int a, int b, int c) {
 		if(discriminant(a, b, c) < 0) {
 			return "no real roots";
@@ -179,7 +179,8 @@ public class Calculate {
 			return min(result, result2) + " and " + max(result, result2);
 		}
 	}	
-	//min method for doubles to determine the minimum out of inputted doubles
+	//min method for doubles, primarily to be used in quadform
+	//accepts two doubles, returns double: the min out of two doubles
 	public static double min (double firstNumber, double secondNumber) {
 		if(firstNumber<secondNumber) {
 			return firstNumber;
