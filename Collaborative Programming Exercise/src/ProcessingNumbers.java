@@ -10,7 +10,7 @@ public class ProcessingNumbers {
 	int firstNum = userInput.nextInt();
 	int sum = 0;
 	int max = firstNum;
-	int maxEven = 0;
+	int maxEven = firstNum;
 	int min = firstNum;
 	boolean done = false;
 	do {
@@ -25,19 +25,24 @@ public class ProcessingNumbers {
 		if(operand % 2 == 0) {
 			sum = operand + sum;
 		}
-		if(operand % 2 == 0 && operand > maxEven) {
+		if(operand % 2 == 0 && (operand > maxEven)) {
 			maxEven = operand;
 		}
 		System.out.println("Are we done yet? Enter yes if done.");
 		String finished = userInput.next();
 		if(finished.equals("yes")) {
 			done = true;
+			if(maxEven %2 != 0) {
+				System.out.println("No even numbers.");
+			}
 		}
 	} while(done == false);
 	System.out.println("This is your min value: " + min);
 	System.out.println("This is your max value: " + max);
 	System.out.println("This is your even sum: " + sum);
+	if(maxEven %2 == 0) {
 	System.out.println("This is your max even value: " + maxEven);
+	}
 	}
 }
 
