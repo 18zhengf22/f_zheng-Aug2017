@@ -30,7 +30,7 @@ public class ProcessingNumbers {
 		}
 		System.out.println("Are we done yet? Enter yes if done.");
 		String finished = userInput.next();
-		if (finished.equals("yes")) {
+		if(finished.equals("yes")) {
 			done = true;
 		}
 	} while(done == false);
