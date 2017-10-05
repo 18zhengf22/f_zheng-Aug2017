@@ -3,13 +3,15 @@
  * This is the final step for the Collaborative Programming Exercise.
  */
 import java.util.Scanner;
-public class Collab {
+public class ProcessingNumbers {
 	public static void main(String[] args) {
 	Scanner userInput = new Scanner(System.in);
+	System.out.println("Enter an integer!");
+	int firstNum = userInput.nextInt();
 	int sum = 0;
-	int max = 0;
+	int max = firstNum;
 	int maxEven = 0;
-	int min = 0;
+	int min = firstNum;
 	boolean done = false;
 	do {
 		System.out.println("Enter an integer!");
