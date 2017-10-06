@@ -1,6 +1,7 @@
 /*Frank Zheng
  * October 4, 2017
  * This is the final step for the Collaborative Programming Exercise.
+ * Prints min, max, sum of evens, and largest even.
  */
 import java.util.Scanner;
 public class ProcessingNumbers {
@@ -25,7 +26,7 @@ public class ProcessingNumbers {
 		if(operand % 2 == 0) {
 			sum = operand + sum;
 		}
-		if(operand % 2 == 0 && (operand > maxEven)) {
+		if((firstNum % 2 != 0 && operand % 2 == 0) || (operand % 2 == 0 && operand > maxEven)) {
 			maxEven = operand;
 		}
 		System.out.println("Are we done yet? Enter yes if done.");
