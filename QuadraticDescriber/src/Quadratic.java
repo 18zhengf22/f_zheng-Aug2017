@@ -4,6 +4,7 @@
  * It is responsible for all the calculations.
  */
 public class Quadratic {
+	
 	public static String quadrDescriber (double a, double b, double c) {
 		System.out.println("Description of the graph of:");
 		System.out.println("y = " + a + " x^2 + " + b + " x + " + c);
@@ -14,17 +15,18 @@ public class Quadratic {
 		} else {
 			opens = "Down";
 		}
-		double aos = -b / (2 * a);
-		double vertex_y = a * aos * aos + b * aos + c;
+		double aos = round2(-b / (2 * a));
+		double vertex_y = round2(a * aos * aos + b * aos + c);
 		String vertex = "Vertex: (" + aos + ", " + vertex_y + ")";
 		String x_cept = quadform(a, b, c);
-		String y_cept = "y-intercept: " + c;
+		String y_cept = "y-intercept: " + round2(c);
 		return "Opens: " + opens + "\n" + 
 			   "Axis of Symmetry: x = " + aos + "\n" + 
 			   vertex + "\n" + 
 			   "x-intercept(s): " + x_cept + "\n" +
 			   y_cept;
 	}
+	
 	public static String quadform (double a, double b, double c) {
 		if (discriminant(a, b, c) < 0) {
 			return "None";
