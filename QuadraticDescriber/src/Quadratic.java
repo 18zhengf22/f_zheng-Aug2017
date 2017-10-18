@@ -1,5 +1,5 @@
 /*Frank Zheng
- * September 27, 2017
+ * September 27, 2017 - October 17, 2017
  * Part of QuadraticDescriber
  * It is responsible for all the calculations.
  */
@@ -11,22 +11,22 @@ public class Quadratic {
 		System.out.println();
 		String opens = "";	
 		if (a > 0) {
-			opens = "Up";
+			opens = "Opens: Up";
 		} else {
-			opens = "Down";
+			opens = "Opens: Down";
 		}
 		double aos = round2(-b / (2 * a));
-		double vertex_y = round2(a * aos * aos + b * aos + c);
-		String vertex = "Vertex: (" + aos + ", " + vertex_y + ")";
-		String x_cept = quadform(a, b, c);
+		String vertex = "Vertex: (" + aos + ", " + round2(a * aos * aos + b * aos + c) + ")";
+		String x_cept = "x-intercept(s): " + quadform(a, b, c);
 		String y_cept = "y-intercept: " + round2(c);
-		return "Opens: " + opens + "\n" + 
-			   "Axis of Symmetry: x = " + aos + "\n" + 
+		return opens + "\n" + //begin each part of description on new line
+			   "Axis of Symmetry: " + aos + "\n" + 
 			   vertex + "\n" + 
-			   "x-intercept(s): " + x_cept + "\n" +
+			   x_cept + "\n" +
 			   y_cept;
 	}
 	
+	//used methods from Calculate improved for Quadratic
 	public static String quadform (double a, double b, double c) {
 		if (discriminant(a, b, c) < 0) {
 			return "None";
