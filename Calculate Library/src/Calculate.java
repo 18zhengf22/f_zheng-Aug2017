@@ -188,4 +188,5 @@ public class Calculate {
 			return secondNumber;
 		}
 	}
+
 }

@@ -8,5 +8,17 @@ public class Pikachu {
 		System.out.println("           z(_(\")(\")");
 
 	}
-
+	public static String scrambleIt (String word) {
+		String scrambled = "";
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) == 'A' && word.charAt(i+1) != 'A') {
+				scrambled += word.charAt(i+1) + word.charAt(i);
+				i++;
+			} else {
+				scrambled += word.charAt(i);
+			}
+		}
+		return scrambled;
+	}
+	
 }
