@@ -13,7 +13,7 @@ public class Split {
 		* What if it's a fancy sandwich with multiple pieces of bread?
 		*/
 		sandwich.split("bread");
-		filling = 
+		String filling = 
 		return filling;
 	}
 
