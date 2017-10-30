@@ -11,8 +11,8 @@ public class Pikachu {
 	public static String scrambleIt (String word) {
 		String scrambled = "";
 		for (int i = 0; i < word.length(); i++) {
-			if (word.charAt(i) == 'A' && word.charAt(i+1) != 'A') {
-				scrambled += word.charAt(i+1) + word.charAt(i);
+			if (word.charAt(i) == 'A' && word.charAt(i + 1) != 'A') {
+				scrambled += word.charAt(i + 1) + "A";
 				i++;
 			} else {
 				scrambled += word.charAt(i);
@@ -20,5 +20,4 @@ public class Pikachu {
 		}
 		return scrambled;
 	}
-	
 }
