@@ -167,7 +167,7 @@ public class Calculate {
 		return round2(result);
 	}
 	//accepts three ints, returns String: use quadratic formula to solve for roots
-	public static String quadform (int a, int b, int c) {
+	public static String quadForm (int a, int b, int c) {
 		if(discriminant(a, b, c) < 0) {
 			return "no real roots";
 		}

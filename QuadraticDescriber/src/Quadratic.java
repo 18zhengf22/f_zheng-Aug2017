@@ -17,7 +17,7 @@ public class Quadratic {
 		}
 		double aos = round2(-b / (2 * a));
 		String vertex = "Vertex: (" + aos + ", " + round2(a * aos * aos + b * aos + c) + ")";
-		String x_cept = "x-intercept(s): " + quadform(a, b, c);
+		String x_cept = "x-intercept(s): " + quadForm(a, b, c);
 		String y_cept = "y-intercept: " + round2(c);
 		return opens + "\n" + //begin each part of description on new line
 			   "Axis of Symmetry: " + aos + "\n" + 
@@ -27,7 +27,7 @@ public class Quadratic {
 	}
 	
 	//used methods from Calculate improved for Quadratic
-	public static String quadform (double a, double b, double c) {
+	public static String quadForm (double a, double b, double c) {
 		if (discriminant(a, b, c) < 0) {
 			return "None";
 		}
