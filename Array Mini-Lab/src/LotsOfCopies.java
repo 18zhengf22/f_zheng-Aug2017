@@ -5,6 +5,8 @@ public class LotsOfCopies {
 		int num = 7;
 		String strMain = "APCS";
 		int[] arrMain = {1, 2, 3, 4, 5};
+		
+		System.out.println("main num: " + num + "before change");
 		changeMe(num, strMain, arrMain);
 		System.out.println("main num = " + num);
 		System.out.println("main String: " + strMain);

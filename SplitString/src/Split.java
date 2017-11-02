@@ -1,3 +1,8 @@
+/*Frank Zheng
+ * October 30, 2017
+ * SplitString
+ * Using split method
+ */
 import java.util.Arrays;
 
 public class Split {
