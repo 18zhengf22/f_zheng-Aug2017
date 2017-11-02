@@ -29,5 +29,5 @@ public class LotsOfCopies {
 	}
 }
 //conclusion: only arrMain[] changes in main after changeMe
-//also, after some testing, I found that setting an array equal to another and then changing the original array to something else will change the second array too, but the int and String variables stay the same
+//also, after some testing (Part 2), I found that setting an array equal to another and then changing the original array to something else will change the second array too, but the int and String variables stay the same
 
