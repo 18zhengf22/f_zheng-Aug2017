@@ -22,20 +22,23 @@ public class Split {
 		System.out.println(Arrays.toString("I like apples!".split(" ")));
 		System.out.println(Arrays.toString("I really like really red apples".split("really")));
 		System.out.println(Arrays.toString("I reallyreally likeapples".split("really")));
-		System.out.println(Split.getTheFilling("breadapplespineapplesbreadlettustomatobaconmayohambreadcheese"));
-		System.out.println(Split.splitAtSpaces("apples pineapples bread lettus bread tomato bacon mayo ham bread cheese"));
+		System.out.println("The filling: " + getTheFilling("breadlettustomatobaconmayohambreadcheesebread"));
+		System.out.println(splitAtSpaces("apples pineapples bread lettus bread tomato bacon mayo ham bread cheese"));
 	}
 
 		//Your task Part 1:
-		/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
+		/*Write a method that take in a string like "applespineapplesbreadlettustombreadatobaconmayohambreadcheese" describing a sandwich
 		* use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
 		* What if it's a fancy sandwich with multiple pieces of bread?
 		*/
 	public static String getTheFilling (String sandwich) {
-		String[] theBread = sandwich.split("bread");
+		String[] btwnBread = sandwich.split("bread");
 		String filling = "";
-		for (int i = 1; i < theBread.length - 1; i++) {
-			filling += theBread[i];
+		if (sandwich.endsWith("bread")) {
+			
+		}
+		for (int i = 1; i < btwnBread.length - 1; i++) {
+			filling += btwnBread[i];
 		}
 		return filling;
 	}
