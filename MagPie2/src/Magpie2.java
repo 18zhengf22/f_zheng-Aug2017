@@ -20,6 +20,22 @@ public class Magpie2 {
 				|| statement.indexOf("sister") >= 0
 				|| statement.indexOf("brother") >= 0) {
 			response = "Tell me more about your family.";
+		} else if (statement.indexOf("Ms. Dove") >= 0
+				|| statement.indexOf("Ms. Dreyer") >= 0
+				|| statement.indexOf("Ms. Price") >= 0) {
+			response = "She sounds like a good teacher.";
+		} else if (statement.indexOf("Mr. Williams") >= 0
+				|| statement.indexOf("Mr. Phillips") >= 0
+				|| statement.indexOf("Mr. Wang") >= 0) {
+			response = "He sounds like a good teacher.";
+		} else if (statement.indexOf("Sorry") >= 0 
+				|| statement.indexOf("sorry") >= 0) {
+			response = "It's fine.";
+		} else if (statement.indexOf("Shut up") >= 0
+				|| statement.indexOf("shut up") >= 0) {
+			response = ":^(";
+		} else if (trim(statement).length = 0) {
+			response = "Say something, please.";
 		} else {
 			response = getRandomResponse();
 		}
