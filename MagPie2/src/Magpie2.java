@@ -34,7 +34,7 @@ public class Magpie2 {
 		} else if (statement.indexOf("Shut up") >= 0
 				|| statement.indexOf("shut up") >= 0) {
 			response = ":^(";
-		} else if (trim(statement).length = 0) {
+		} else if (statement.trim().length() == 0) {
 			response = "Say something, please.";
 		} else {
 			response = getRandomResponse();
@@ -47,7 +47,7 @@ public class Magpie2 {
 	 * returns a non-committal string
 	 */
 	private String getRandomResponse() {
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -60,6 +60,10 @@ public class Magpie2 {
 			response = "Do you really think so?";
 		} else if (whichResponse == 3) {
 			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "Wow, then what?";
+		} else if (whichResponse == 5) {
+			response = "OK and?";
 		}
 
 		return response;
