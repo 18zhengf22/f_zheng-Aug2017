@@ -1,4 +1,7 @@
-
+/*Frank Zheng
+ *November 8, 2017
+ *Magpie Assignment
+ */
 public class Magpie2 {
 
 	//Get a default greeting and return a greeting	
