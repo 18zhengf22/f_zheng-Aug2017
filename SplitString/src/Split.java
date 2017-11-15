@@ -19,7 +19,7 @@ public class Split {
 	//play around with String.split! 
 	//What happens if you "I reallyreally likeapples".split("really") ?
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString("I like apples!".split(" ")));
+		System.out.println(Arrays.toString("I like apples!".split("q")));
 		System.out.println(Arrays.toString("I really like really red apples".split("really")));
 		System.out.println(Arrays.toString("I reallyreally likeapples".split("really")));
 		System.out.println("The filling: " + getTheFilling("breadlettustomatobaconmayohambreadcheesebread"));

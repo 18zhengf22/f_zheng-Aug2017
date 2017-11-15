@@ -6,10 +6,11 @@ public class FracCalc {
 
     public static void main(String[] args) {
     	Scanner userInput = new Scanner(System.in);
-    	String input = userInput.nextLine();
-    	produceAnswer(input);
-    	System.out.println(produceAnswer(input));
-    
+    	while (userInput.next() != "quit") {
+    		String input = userInput.nextLine();
+    		produceAnswer(input);
+    		System.out.println(produceAnswer(input));
+    	}
         // TODO: Read the input from the user and call produceAnswer with an equation
 
     }
@@ -27,7 +28,18 @@ public class FracCalc {
     	String firstOperand = array[0];
     	String operator = array[1];
     	String secondOperand = array[2];
-    	return secondOperand;
+    	String whole = "";
+    	String numerator = "";
+    	String denominator = "";
+    	if (firstOperand.indexOf("_") >= 0 && firstOperand.indexOf("/") >= 0) {
+    		String[] arrOperand = firstOperand.split("_");
+    		whole = arrOperand[0];
+    		String[] arrOperand2 = arrOperand[1].split("/");
+    		numerator = arrOperand2[0];
+    		denominator = arrOperand2[1];
+    	}
+    	String result = "whole:" + whole + " numerator:" + numerator + " denominator:" + denominator;
+    	return result;
         // TODO: Implement this function to produce the solution to the input
         
         //return "";
