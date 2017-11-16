@@ -28,21 +28,35 @@ public class FracCalc {
     	String firstOperand = array[0];
     	String operator = array[1];
     	String secondOperand = array[2];
-    	String whole = "";
-    	String numerator = "";
-    	String denominator = "";
-    	if (firstOperand.indexOf("_") >= 0 && firstOperand.indexOf("/") >= 0) {
-    		String[] arrOperand = firstOperand.split("_");
-    		whole = arrOperand[0];
-    		String[] arrOperand2 = arrOperand[1].split("/");
-    		numerator = arrOperand2[0];
-    		denominator = arrOperand2[1];
-    	}
-    	String result = "whole:" + whole + " numerator:" + numerator + " denominator:" + denominator;
-    	return result;
+    	splitOperand(firstOperand);
+    	splitOperand(secondOperand);
+    }
         // TODO: Implement this function to produce the solution to the input
         
         //return "";
+    public static String[] splitOperand(String operand) {
+    	String whole = "";
+    	String numer = "";
+    	String denom = "";
+    	String fraction = "";
+    	String[] arrOperand = operand.split("_");
+    	if (operand.contains("_")) {
+    		whole = arrOperand[0];
+    		fraction = arrOperand[1];
+    	} else if (operand.contains("/")) {
+    		whole = "0";
+    		fraction = arrOperand[1];
+    	} else {
+    		whole = operand;
+    		numer = "0";
+    		denom = "1";
+    	}
+    	String[] arrFraction = fraction.split("/");
+    	numer = arrFraction[0];
+    	denom = arrFraction[1];
+    	String[] result = new String[3];
+    	//add to array
+    	return result;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
