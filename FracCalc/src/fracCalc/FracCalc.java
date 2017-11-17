@@ -1,3 +1,7 @@
+/*Frank Zheng
+ *November 2017
+ *FracCalc
+ */
 package fracCalc;
 
 import java.util.Scanner;
@@ -30,6 +34,8 @@ public class FracCalc {
     	String secondOperand = array[2];
     	splitOperand(firstOperand);
     	splitOperand(secondOperand);
+    	String result = "whole:" + splitOperand(secondOperand)[0] + " numerator:" + splitOperand(secondOperand)[1] + " denominator:" + splitOperand(secondOperand)[2];
+    	return result;
     }
         // TODO: Implement this function to produce the solution to the input
         
@@ -45,18 +51,19 @@ public class FracCalc {
     		fraction = arrOperand[1];
     	} else if (operand.contains("/")) {
     		whole = "0";
-    		fraction = arrOperand[1];
+    		fraction = arrOperand[0];
     	} else {
     		whole = operand;
     		numer = "0";
     		denom = "1";
     	}
-    	String[] arrFraction = fraction.split("/");
-    	numer = arrFraction[0];
-    	denom = arrFraction[1];
-    	String[] result = new String[3];
-    	//add to array
-    	return result;
+    	if (!fraction.equals("")) {
+    		String[] arrFraction = fraction.split("/");
+    		numer = arrFraction[0];
+    		denom = arrFraction[1];
+    	}
+    	String[] arrComponents = {whole, numer, denom};
+    	return arrComponents;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
