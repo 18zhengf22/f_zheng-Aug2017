@@ -1,6 +1,7 @@
 /*Frank Zheng
  *November 2017
  *FracCalc
+ *Fraction calculator that can add, subtract, multiply, or divide two fractions
  */
 package fracCalc;
 
@@ -36,7 +37,8 @@ public class FracCalc {
     		if (operator.equals("+") || operator.equals("-")) {
     			return addSubtract(arrFirstOperand, arrSecondOperand, operator);
     		} else {
-    			return "multiplyDivide";
+    			return "";
+    			//return multiplyDivide(arrFirstOperand, arrSecondOperand, operator);
     		}
     }
         // TODO: Implement this function to produce the solution to the input
