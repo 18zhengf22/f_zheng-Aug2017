@@ -33,9 +33,9 @@ public class FracCalc {
     		String operator = arrSplit[1];
     		int[] arrSecondOperand = splitOperand(arrSplit[2]);
     		if (operator.equals("+") || operator.equals("-")) {
-    			return addSubtract(arrFirstOperand, arrSecondOperand, operator);
+    			return addSubtract(arrFirstOperand, arrSecondOperand, operator)[0] + "/" + addSubtract(arrFirstOperand, arrSecondOperand, operator)[1];
     		} else {
-    			return multiplyDivide(arrFirstOperand, arrSecondOperand, operator);
+    			return multiplyDivide(arrFirstOperand, arrSecondOperand, operator)[0] + "/" + multiplyDivide(arrFirstOperand, arrSecondOperand, operator)[1];
     		}
     }
         // TODO: Implement this function to produce the solution to the input
@@ -55,13 +55,16 @@ public class FracCalc {
     		} else {
     			whole = Integer.parseInt(operand);
     		}
+    		if (whole < 0) {
+    			numer *= -1;
+    		}
     		numer = denom * whole + numer;
     		int[] arrImprOperand = {numer, denom};
     		return arrImprOperand;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    public static String addSubtract(int[] firstOperand, int[] secondOperand, String operator) {
+    public static int[] addSubtract(int[] firstOperand, int[] secondOperand, String operator) {
     		int answerNumer = 0;
     		int answerDenom = firstOperand[1] * secondOperand[1];
     		int newFirstNumer = firstOperand[0] * secondOperand[1];
@@ -71,10 +74,11 @@ public class FracCalc {
     		} else {
     			answerNumer = newFirstNumer - newSecondNumer;
     		}
-    		String answer = answerNumer + "/" + answerDenom;
-    		return answer;
+    		int[] answer = {answerNumer, answerDenom};
+			return answer;
+    		
     }
-    public static String multiplyDivide (int[] firstOperand, int[] secondOperand, String operator) {
+    public static int[] multiplyDivide (int[] firstOperand, int[] secondOperand, String operator) {
     		int answerNumer = 0;
     		int answerDenom = 1;
     		if (operator.equals("*")) {
@@ -84,7 +88,7 @@ public class FracCalc {
     			answerNumer = firstOperand[0] * secondOperand[1];
     			answerDenom = firstOperand[1] * secondOperand[0];
     		}
-    		String answer = answerNumer + "/" + answerDenom;
+    		int[] answer = {answerNumer, answerDenom};
     		return answer;
     }
 }
