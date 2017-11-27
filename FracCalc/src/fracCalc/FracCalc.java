@@ -10,13 +10,12 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    		Scanner userInput = new Scanner(System.in);
-    		while (!userInput.next().equals("quit")) {
-    			String input = userInput.nextLine();
-    			System.out.println(produceAnswer(input));
-    		}
+    	Scanner userInput = new Scanner(System.in);
+    	while (!userInput.next().equals("quit")) {
+    	String input = userInput.nextLine();
+    	System.out.println(produceAnswer(input));
+    	}
         // TODO: Read the input from the user and call produceAnswer with an equation
-
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -28,67 +27,96 @@ public class FracCalc {
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) {
-    		String[] arrSplit = input.split(" ");
-    		int[] arrFirstOperand = splitOperand(arrSplit[0]);
-    		String operator = arrSplit[1];
-    		int[] arrSecondOperand = splitOperand(arrSplit[2]);
-    		if (operator.equals("+") || operator.equals("-")) {
-    			return addSubtract(arrFirstOperand, arrSecondOperand, operator)[0] + "/" + addSubtract(arrFirstOperand, arrSecondOperand, operator)[1];
-    		} else {
-    			return multiplyDivide(arrFirstOperand, arrSecondOperand, operator)[0] + "/" + multiplyDivide(arrFirstOperand, arrSecondOperand, operator)[1];
-    		}
+    	String[] arrSplit = input.split(" ");
+    	int[] arrFirstOperand = splitOperand(arrSplit[0]);
+    	String operator = arrSplit[1];
+    	int[] arrSecondOperand = splitOperand(arrSplit[2]);
+    	if (operator.equals("+") || operator.equals("-")) {
+    		return reduce(addSubtract(arrFirstOperand, arrSecondOperand, operator));
+    	} else {
+    		return reduce(multiplyDivide(arrFirstOperand, arrSecondOperand, operator));
+   		}
     }
+    
         // TODO: Implement this function to produce the solution to the input
         
         //return "";
     public static int[] splitOperand(String operand) {
-    		int whole = 0;
-    		int numer = 0;
-    		int denom = 1;
-    		if (operand.contains("_")) {
-    			whole = Integer.parseInt(operand.split("_")[0]);
-    			numer = Integer.parseInt(operand.split("_")[1].split("/")[0]);
-    			denom = Integer.parseInt(operand.split("/")[1]);
-    		} else if (operand.contains("/")) {
-    			numer = Integer.parseInt(operand.split("/")[0]);
-    			denom = Integer.parseInt(operand.split("/")[1]);
-    		} else {
-    			whole = Integer.parseInt(operand);
-    		}
-    		if (whole < 0) {
-    			numer *= -1;
-    		}
-    		numer = denom * whole + numer;
-    		int[] arrImprOperand = {numer, denom};
-    		return arrImprOperand;
+    	int whole = 0;
+    	int numer = 0;
+    	int denom = 1;
+    	if (operand.contains("_")) {
+    		whole = Integer.parseInt(operand.split("_")[0]);
+    		numer = Integer.parseInt(operand.split("_")[1].split("/")[0]);
+    		denom = Integer.parseInt(operand.split("/")[1]);
+    	} else if (operand.contains("/")) {
+    		numer = Integer.parseInt(operand.split("/")[0]);
+    		denom = Integer.parseInt(operand.split("/")[1]);
+    	} else {
+    		whole = Integer.parseInt(operand);
+    	}
+    	if (whole < 0) {
+    		numer *= -1;
+    	}
+    	numer = denom * whole + numer;
+    	int[] arrImprOperand = {numer, denom};
+    	return arrImprOperand;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static int[] addSubtract(int[] firstOperand, int[] secondOperand, String operator) {
-    		int answerNumer = 0;
-    		int answerDenom = firstOperand[1] * secondOperand[1];
-    		int newFirstNumer = firstOperand[0] * secondOperand[1];
-    		int newSecondNumer = secondOperand[0] * firstOperand[1];
-    		if (operator.equals("+")) {
-    			answerNumer = newFirstNumer + newSecondNumer;
-    		} else {
-    			answerNumer = newFirstNumer - newSecondNumer;
-    		}
-    		int[] answer = {answerNumer, answerDenom};
-			return answer;
-    		
+    	int answerNumer = 0;
+    	int answerDenom = firstOperand[1] * secondOperand[1];
+    	int newFirstNumer = firstOperand[0] * secondOperand[1];
+    	int newSecondNumer = secondOperand[0] * firstOperand[1];
+    	if (operator.equals("+")) {
+    		answerNumer = newFirstNumer + newSecondNumer;
+    	} else {
+    		answerNumer = newFirstNumer - newSecondNumer;
+    	}
+    	int[] answer = {answerNumer, answerDenom};
+		return answer;
     }
+    
     public static int[] multiplyDivide (int[] firstOperand, int[] secondOperand, String operator) {
-    		int answerNumer = 0;
-    		int answerDenom = 1;
-    		if (operator.equals("*")) {
-    			answerNumer = firstOperand[0] * secondOperand[0];
-    			answerDenom = firstOperand[1] * secondOperand[1];
-    		} else {
-    			answerNumer = firstOperand[0] * secondOperand[1];
-    			answerDenom = firstOperand[1] * secondOperand[0];
-    		}
-    		int[] answer = {answerNumer, answerDenom};
-    		return answer;
+    	int answerNumer = 0;
+    	int answerDenom = 1;
+    	if (operator.equals("*")) {
+    		answerNumer = firstOperand[0] * secondOperand[0];
+    		answerDenom = firstOperand[1] * secondOperand[1];
+    	} else {
+    		answerNumer = firstOperand[0] * secondOperand[1];
+    		answerDenom = firstOperand[1] * secondOperand[0];
+    	}
+    	int[] answer = {answerNumer, answerDenom};
+    	return answer;
     }
+    
+    public static String reduce (int[] answer) {
+    	String reduced = "";
+    	int gcf = gcf(answer[0], answer[1]);
+    	reduced = answer[0] / gcf + "/" + answer[1] / gcf;
+    	if (answer[0] > answer[1]) {
+    		reduced = answer[0] / answer[1] + "_" + (answer[0] % answer[1]) / gcf + "/" + answer[1] / gcf;
+    	}
+    	return reduced;
+    }
+    
+    public static int gcf (int integer, int integer2) {
+		int i;
+		for(i = integer; !(isDivisibleBy(integer, i) && isDivisibleBy(integer2, i)); i--) {	
+		}
+		return i;
+	}
+    
+    public static boolean isDivisibleBy (int operand, int factor) {
+		if(factor == 0) {
+			throw new IllegalArgumentException();
+		}
+		if(operand % factor == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
