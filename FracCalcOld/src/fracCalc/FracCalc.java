@@ -10,15 +10,21 @@ import java.util.*;
 
 public class FracCalc {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+        // TODO: Read the input from the user and call produceAnswer with an equation
     		Scanner userInput = new Scanner(System.in);
-    		System.out.println("Enter expression. To quit, type \"quit\".");
-    		while (!userInput.next().equals("quit")) {
-    			String input = userInput.nextLine();
-    			System.out.println(produceAnswer(input));
-    		}
-    		// TODO: Read the input from the user and call produceAnswer with an equation
+		System.out.println("Enter expression. To quit, type \"quit\".");
+		boolean done = true;
+		while(done) {
+			String input = userInput.nextLine();
+			if(input.equals("quit")) {
+				done = false;
+			} else {
+				System.out.println(produceAnswer(input));
+			}
+		}
     }
+    		// TODO: Read the input from the user and call produceAnswer with an equation
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
     // This function takes a String 'input' and produces the result
