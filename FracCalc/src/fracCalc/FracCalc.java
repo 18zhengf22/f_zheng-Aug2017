@@ -39,16 +39,19 @@ public class FracCalc {
     		Fraction firstFrac = new Fraction(arrInput[0]);
     		String operator = arrInput[1];
     		Fraction secondFrac = new Fraction(arrInput[2]);
-    		String result = "";
+    		Fraction result;
+    		String resultString = "";
     		if (firstFrac.getDenom() == 0 || secondFrac.getDenom() == 0) {
     			return "ERROR: Cannot divide by zero.";
     		}
     		if (operator.equals("+") || operator.equals("-")) {
-    			result = firstFrac.addSubtract(secondFrac, operator).toString();
+    			result = firstFrac.addSubtract(secondFrac, operator);
     		} else {
-    			result = firstFrac.multDivide(secondFrac, operator).toString();
+    			result = firstFrac.multDivide(secondFrac, operator);
     		}
-    		return result;
+    		result.reduce();
+    		resultString = result.toString();
+    		return resultString;
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need

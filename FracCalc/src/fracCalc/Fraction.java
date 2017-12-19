@@ -58,7 +58,7 @@ public class Fraction {
 		numer = denom * whole + numer * sign; //numer changes, denom does not change
 	}
 	
-	public String addSubtract(Fraction secondFrac, String operator) {
+	public Fraction addSubtract(Fraction secondFrac, String operator) {
 		toImproper(); //converts first fraction to improper
 		secondFrac.toImproper(); //converts second fraction to improper
 		Fraction result = new Fraction("0_0/1");
@@ -68,10 +68,10 @@ public class Fraction {
     		} else { //subtract
     			result.setNumer(this.numer * secondFrac.getDenom() - secondFrac.getNumer() * this.denom);
     		}
-    		return result.toString();
+    		return result;
 	} 
 	
-	public String multDivide(Fraction secondFrac, String operator) {
+	public Fraction multDivide(Fraction secondFrac, String operator) {
 		toImproper(); //converts first fraction to improper
 		secondFrac.toImproper(); //converts second fraction to improper
 		Fraction result = new Fraction("0_0/1");
@@ -82,7 +82,7 @@ public class Fraction {
 			result.setNumer(this.numer * secondFrac.getDenom()); //basically multiplies by reciprocal
 			result.setDenom(this.denom * secondFrac.getNumer());
 		}
-		return result.toString();
+		return result;
 	}
 	
 	public String toString() { //answer is
@@ -95,9 +95,13 @@ public class Fraction {
 		}
 	}
 	
-	//public reduce() {
-		
-	//}
+	public void reduce() { 
+		whole = numer / denom;
+		numer %= denom;
+		int gcf = gcf(numer, denom);
+		numer /= gcf;
+		denom /= gcf;
+	}
 	
 	public static int gcf(int firstNum, int secondNum) {
 		int i;
