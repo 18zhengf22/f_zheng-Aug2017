@@ -36,32 +36,21 @@ public class FracCalc {
     public static String produceAnswer(String input) {  	
         // TODO: Implement this function to produce the solution to the input
     		String[] arrInput = input.split(" ");
-    		Fraction firstOperand = splitOperand(arrInput[0]);
+    		Fraction firstFrac = new Fraction(arrInput[0]);
     		String operator = arrInput[1];
-    		Fraction secondOperand = splitOperand(arrInput[2]);
-    		return secondOperand.toString();
+    		Fraction secondFrac = new Fraction(arrInput[2]);
+    		String result = "";
+    		if (firstFrac.getDenom() == 0 || secondFrac.getDenom() == 0) {
+    			return "ERROR: Cannot divide by zero.";
+    		}
+    		if (operator.equals("+") || operator.equals("-")) {
+    			result = firstFrac.addSubtract(secondFrac, operator).toString();
+    		} else {
+    			result = firstFrac.multDivide(secondFrac, operator).toString();
+    		}
+    		return result;
     }
     
-    public static Fraction splitOperand(String operand) {
-    		int whole = 0;
-		int numer = 0;
-		int denom = 1;
-		if (operand.contains("_")) {
-			whole = Integer.parseInt(operand.split("_")[0]);
-			numer = Integer.parseInt(operand.split("_")[1].split("/")[0]);
-			denom = Integer.parseInt(operand.split("/")[1]);
-		} else if (operand.contains("/")) {
-			numer = Integer.parseInt(operand.split("/")[0]);
-			denom = Integer.parseInt(operand.split("/")[1]);
-		} else {
-			whole = Integer.parseInt(operand);
-		}
-		if (whole < 0) {
-			numer *= -1;
-		}
-		Fraction result = new Fraction(whole, numer, denom);
-		return result;
-    }
     // TODO: Fill in the space below with any helper methods that you think you will need
     
 }
