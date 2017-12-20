@@ -54,11 +54,12 @@ public class Fraction {
 	
 	
 	public void toImproper() { //used to convert fractions to improper for ease of calculations
+		numer = absValue(denom * whole + numer) * sign;
 		whole = 0; //whole becomes 0
-		numer = denom * whole + numer * sign; //numer changes, denom does not change
+		denom = absValue(denom);
 	}
 	
-	public Fraction addSubtract(Fraction secondFrac, String operator) {
+	public String addSubtract(Fraction secondFrac, String operator) {
 		toImproper(); //converts first fraction to improper
 		secondFrac.toImproper(); //converts second fraction to improper
 		Fraction result = new Fraction("0_0/1");
@@ -68,10 +69,10 @@ public class Fraction {
     		} else { //subtract
     			result.setNumer(this.numer * secondFrac.getDenom() - secondFrac.getNumer() * this.denom);
     		}
-    		return result;
+    		return reduce(result);
 	} 
 	
-	public Fraction multDivide(Fraction secondFrac, String operator) {
+	public String multDivide(Fraction secondFrac, String operator) {
 		toImproper(); //converts first fraction to improper
 		secondFrac.toImproper(); //converts second fraction to improper
 		Fraction result = new Fraction("0_0/1");
@@ -82,7 +83,24 @@ public class Fraction {
 			result.setNumer(this.numer * secondFrac.getDenom()); //basically multiplies by reciprocal
 			result.setDenom(this.denom * secondFrac.getNumer());
 		}
-		return result;
+		return reduce(result);
+	}
+	
+	public String reduce(Fraction result) { 
+		if(result.numer < 0 && result.denom < 0) {
+			result.numer = absValue(result.numer);
+			result.denom = absValue(result.denom);
+		} if(isDivisibleBy(result.numer,result.denom)) {
+			result.whole = result.numer/result.denom;
+			result.numer = 0;
+		} else if(absValue(result.numer) > absValue(result.denom)) {
+			result.whole = result.numer / result.denom;
+			result.numer = absValue(result.numer % result.denom);
+		}
+		int gcf = gcf(numer, denom);
+		result.numer /= gcf;
+		result.denom /= gcf;
+		return result.toString();
 	}
 	
 	public String toString() { //answer is
@@ -93,14 +111,6 @@ public class Fraction {
 		} else { //mixed if no components are 0
 			return whole + "_" + numer + "/" + denom;
 		}
-	}
-	
-	public void reduce() { 
-		whole = numer / denom;
-		numer %= denom;
-		int gcf = gcf(numer, denom);
-		numer /= gcf;
-		denom /= gcf;
 	}
 	
 	public static int gcf(int firstNum, int secondNum) {

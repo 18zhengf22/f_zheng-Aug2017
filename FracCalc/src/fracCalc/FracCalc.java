@@ -39,9 +39,9 @@ public class FracCalc {
     		Fraction firstFrac = new Fraction(arrInput[0]);
     		String operator = arrInput[1];
     		Fraction secondFrac = new Fraction(arrInput[2]);
-    		Fraction result;
-    		String resultString = "";
-    		if (firstFrac.getDenom() == 0 || secondFrac.getDenom() == 0) {
+    		String result = "";
+    		if (firstFrac.getDenom() == 0 || secondFrac.getDenom() == 0 ||
+    			secondFrac.getNumer() == 0) {
     			return "ERROR: Cannot divide by zero.";
     		}
     		if (operator.equals("+") || operator.equals("-")) {
@@ -49,9 +49,7 @@ public class FracCalc {
     		} else {
     			result = firstFrac.multDivide(secondFrac, operator);
     		}
-    		result.reduce();
-    		resultString = result.toString();
-    		return resultString;
+    		return result;
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
