@@ -6,7 +6,6 @@ public class Pikachu {
 		System.out.println("             (\\__/)");
 		System.out.println("             (o^-^)");
 		System.out.println("           z(_(\")(\")");
-
 	}
 	public static String scrambleIt (String word) {
 		String scrambled = "";

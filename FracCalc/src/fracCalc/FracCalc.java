@@ -40,10 +40,6 @@ public class FracCalc {
     		String operator = arrInput[1];
     		Fraction secondFrac = new Fraction(arrInput[2]);
     		String result = "";
-    		if (firstFrac.getDenom() == 0 || secondFrac.getDenom() == 0 ||
-    			secondFrac.getNumer() == 0) {
-    			return "ERROR: Cannot divide by zero.";
-    		}
     		if (operator.equals("+") || operator.equals("-")) {
     			result = firstFrac.addSubtract(secondFrac, operator);
     		} else {

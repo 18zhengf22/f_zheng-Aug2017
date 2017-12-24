@@ -24,7 +24,7 @@ public class DoMath {
 		System.out.println(Calculate.exponent(3, 3));
 		System.out.println(Calculate.factorial(4));
 		System.out.println(Calculate.isPrime(19));
-		System.out.println(Calculate.gcf(24, 54));
+		System.out.println(Calculate.gcf(-24, 54));
 		System.out.println(Calculate.sqrt(25));
 		System.out.println(Calculate.quadForm(-1, -2, 4));
 

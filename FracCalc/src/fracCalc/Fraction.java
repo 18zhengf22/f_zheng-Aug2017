@@ -6,7 +6,7 @@ public class Fraction {
 	private int denom;
 	private int sign;
 	//constructor that accepts a String (input) 
-	public Fraction(String input) {
+	public Fraction(String input) { //basically splitOperand
 		whole = 0;
 		numer = 0;
 		denom = 1;
@@ -54,7 +54,7 @@ public class Fraction {
 	
 	
 	public void toImproper() { //used to convert fractions to improper for ease of calculations
-		numer = absValue(denom * whole + numer) * sign;
+		numer = absValue(denom * whole + numer * sign) * sign;
 		whole = 0; //whole becomes 0
 		denom = absValue(denom);
 	}
@@ -64,10 +64,15 @@ public class Fraction {
 		secondFrac.toImproper(); //converts second fraction to improper
 		Fraction result = new Fraction("0_0/1");
 		result.setDenom(this.denom * secondFrac.getDenom()); //common denom
-    		if (operator.equals("+")) { //add
+    		if(operator.equals("+")) { //add
     			result.setNumer(this.numer * secondFrac.getDenom() + secondFrac.getNumer() * this.denom);
     		} else { //subtract
     			result.setNumer(this.numer * secondFrac.getDenom() - secondFrac.getNumer() * this.denom);
+    		}
+    		if(result.getNumer() == 0) {
+    			result.setWhole(0);
+    			result.setNumer(0);
+    			result.setDenom(1);
     		}
     		return reduce(result);
 	} 
@@ -82,24 +87,35 @@ public class Fraction {
 		} else { //divide
 			result.setNumer(this.numer * secondFrac.getDenom()); //basically multiplies by reciprocal
 			result.setDenom(this.denom * secondFrac.getNumer());
+			if(result.getDenom() < 0 && result.getNumer() > 0) { //makes sure negative sign is with numerator instead of denominator
+				result.setNumer(result.getNumer() * -1);
+				result.setDenom(result.getDenom() * -1);
+			}
 		}
+		if(result.getDenom() == 0) {
+			return "ERROR";
+		} else {
 		return reduce(result);
+		}
 	}
 	
-	public String reduce(Fraction result) { 
-		if(result.numer < 0 && result.denom < 0) {
-			result.numer = absValue(result.numer);
-			result.denom = absValue(result.denom);
-		} if(isDivisibleBy(result.numer,result.denom)) {
-			result.whole = result.numer/result.denom;
-			result.numer = 0;
-		} else if(absValue(result.numer) > absValue(result.denom)) {
-			result.whole = result.numer / result.denom;
-			result.numer = absValue(result.numer % result.denom);
+	public String reduce(Fraction result) {
+		if(result.getNumer() < 0 && result.getDenom() < 0) { //make positive if -/-
+			result.setNumer(absValue(result.getNumer()));
+			result.setDenom(absValue(result.getDenom()));
+		} if(result.getNumer() % result.getDenom() == 0) { //simplify to whole if numer divisible by denom
+			result.setWhole(result.getNumer() / result.getDenom());
+			result.setNumer(0);
+		} else if(absValue(result.getNumer()) > absValue(result.getDenom())) { //convert to mixed if improper
+			result.setWhole(result.getNumer() / result.getDenom());
+			result.setNumer(absValue(result.getNumer() % result.getDenom()));
+			result.setDenom(absValue(result.getDenom()));
 		}
-		int gcf = gcf(numer, denom);
-		result.numer /= gcf;
-		result.denom /= gcf;
+		int gcf = gcf(result.getNumer(), result.getDenom());
+		if(gcf != 0) {
+			result.setNumer(result.getNumer() / gcf);
+			result.setDenom(absValue(result.getDenom() / gcf));
+		}
 		return result.toString();
 	}
 	
@@ -114,18 +130,19 @@ public class Fraction {
 	}
 	
 	public static int gcf(int firstNum, int secondNum) {
-		int i;
-		for(i = firstNum; !(isDivisibleBy(firstNum, i) && isDivisibleBy(secondNum, i)); i--) {	
+		firstNum = absValue(firstNum);
+		secondNum = absValue(secondNum);
+		if(firstNum == 0 || secondNum == 0) {
+			return 0;
 		}
-		return i;
-	}
-	
-	public static boolean isDivisibleBy(int operand, int factor) {
-		if(operand % factor == 0) {
-			return true;
-		} else {
-			return false;
+		while (secondNum != 0) {
+			if(firstNum > secondNum) {
+				firstNum -= secondNum;
+			} else {
+				secondNum -= firstNum;
+			}
 		}
+		return firstNum;
 	}
 	
 	public static int absValue(int operand) {
