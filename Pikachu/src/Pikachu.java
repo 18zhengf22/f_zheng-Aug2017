@@ -52,7 +52,7 @@ public static void createParty(ArrayList<Traveler> party, String[] dwarfNames)
 // party has traveled.
 //Ex.  Bilbo has traveled 100 miles
 //     Gandalf the grey has traveled 300 miles
-//     Fili has traveled 100 miles
+//     fili has traveled 100 miles
 //     kili has traveled 100 miles
 public static String allTravel(ArrayList<Traveler> party, int miles)
 {
