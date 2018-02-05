@@ -70,7 +70,7 @@ public class ThereAndBackAgain
 		String result = "";
 		for (int i = 0; i < party.size(); i++) {
 			party.get(i).travel(miles);
-			result += party.get(i) + " has traveled " + party.get(i).getDistanceTraveled() + " miles\n";
+			result += party.get(i) + " has traveled " + party.get(i).getDistanceTraveled() + " miles \n";
 		}
 		return result;
 	}
