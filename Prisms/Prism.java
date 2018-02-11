@@ -10,10 +10,20 @@
  */
 
 
-public class Prism  
+public abstract class Prism  
 {
-
-	
+	private double height;
+	public Prism(int height) {
+		this.height = height;
+	}
+	public abstract double calcAreaOfBase();
+	public abstract double calcPerimeter();
+	public double calcVolume() {
+		return calcAreaOfBase() * height;
+	}
+	public double calcSA() {
+		return calcPerimeter() * height + 2 * calcAreaOfBase();
+	}
 	
 }
 	
