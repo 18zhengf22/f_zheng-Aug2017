@@ -13,7 +13,7 @@
 public abstract class Prism  
 {
 	private double height;
-	public Prism(int height) {
+	public Prism(double height) {
 		this.height = height;
 	}
 	public abstract double calcAreaOfBase();
