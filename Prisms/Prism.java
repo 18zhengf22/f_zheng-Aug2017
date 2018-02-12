@@ -24,6 +24,5 @@ public abstract class Prism
 	public double calcSA() {
 		return calcPerimeter() * height + 2 * calcAreaOfBase();
 	}
-	
 }
 	
