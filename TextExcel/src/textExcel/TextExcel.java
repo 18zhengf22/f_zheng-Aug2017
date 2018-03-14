@@ -13,7 +13,7 @@ public class TextExcel
 	    Spreadsheet spreadsheet = new Spreadsheet();
 	    boolean done = true;
 	    while(done) {
-	    		String input = scanner.nextLine();
+	    	String input = scanner.nextLine();
 			if(input.equals("quit")) {
 				done = false;
 			} else {

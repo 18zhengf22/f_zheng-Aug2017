@@ -4,9 +4,10 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
+	Cell[][] cells;
 	//constructor
 	public Spreadsheet() {
-		Cell[][] cells = new Cell[getRows()][getCols()];
+		cells = new Cell[getRows()][getCols()];
 		for (int i = 0; i < getRows(); i++) {
 			for (int j = 0; j < getCols(); j++) {
 				cells[i][j] = new EmptyCell();
@@ -35,15 +36,14 @@ public class Spreadsheet implements Grid
 	@Override
 	public Cell getCell(Location loc)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return cells[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
 	public String getGridText()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String gridText = "";
+		return gridText;
 	}
 
 }
