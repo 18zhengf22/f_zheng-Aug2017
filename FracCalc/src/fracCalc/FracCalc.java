@@ -40,7 +40,7 @@ public class FracCalc {
     		String operator = arrInput[1];
     		Fraction secondFrac = new Fraction(arrInput[2]);
     		String result = "";
-    		if (operator.equals("+") || operator.equals("-")) {
+    		if(operator.equals("+") || operator.equals("-")) {
     			result = firstFrac.addSubtract(secondFrac, operator);
     		} else {
     			result = firstFrac.multDivide(secondFrac, operator);
