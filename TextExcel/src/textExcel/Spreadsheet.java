@@ -42,7 +42,24 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		String gridText = "";
+		int letter = 65;
+		String gridText = "   |";
+		for (int i = 0; i < 12; i++) {
+			gridText += (char) letter + "         |";
+			letter++;
+		}
+		int number = 1;
+		for (int i = 0; i < 20; i++) {
+			if(number < 10) {
+				gridText += "\n" + number + "  |";
+			} else {
+				gridText += "\n" + number + " |";
+			}
+			for (int j = 0; j < 12; j++) {
+				gridText += "          |";
+			}
+			number++;
+		}
 		return gridText;
 	}
 
