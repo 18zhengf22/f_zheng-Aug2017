@@ -1,15 +1,19 @@
 package textExcel;
 
 public class EmptyCell implements Cell {
+	private String cellContents;
+	public EmptyCell() {
+		cellContents = "";
+	}
 
 	@Override
 	public String abbreviatedCellText() { // text for spreadsheet cell display, must be exactly length 10
-		return null;
+		return "          ";
 	}
 
 	@Override
 	public String fullCellText() { // text for individual cell inspection, not truncated or padded
-		return null;
+		return "";
 	}
 
 }

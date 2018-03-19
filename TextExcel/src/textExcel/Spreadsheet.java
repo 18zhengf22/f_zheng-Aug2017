@@ -19,7 +19,31 @@ public class Spreadsheet implements Grid
 	public String processCommand(String command)
 	{
 		//cell inspection
-		return getCell(new SpreadsheetLocation(command)).fullCellText(); 
+		if(command.length() == 2 || command.length() == 3) { 
+			Location loc = new SpreadsheetLocation(command.toUpperCase());
+			return inspectCell(loc);
+		} else
+		
+		//assignment of string values
+		if(command.contains("=")) {	
+			assignCell(command);
+			return getGridText();
+		} else
+		
+		//clearing the entire sheet
+		if(command.toLowerCase().equals("clear")) {
+			clearSheet();
+			return getGridText();
+		} else
+		
+		//clearing a particular cell
+		if(command.toLowerCase().startsWith("clear") && command.length() > 7) {
+			Location loc = new SpreadsheetLocation(command.substring(6).toUpperCase());
+			clearCell(loc);
+			return getGridText();
+		} else {
+			return "";
+		}
 	}
 
 	@Override
@@ -43,12 +67,14 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
+		//header
 		int letter = 65;
 		String gridText = "   |";
 		for (int i = 0; i < 12; i++) {
 			gridText += (char) letter + "         |";
 			letter++;
 		}
+		
 		int number = 1;
 		for (int i = 0; i < 20; i++) {
 			if(number < 10) {
@@ -57,11 +83,33 @@ public class Spreadsheet implements Grid
 				gridText += "\n" + number + " |";
 			}
 			for (int j = 0; j < 12; j++) {
-				gridText += "          |";
+				gridText += cells[i][j].abbreviatedCellText() + "|";
 			}
 			number++;
 		}
+		gridText += "\n";
 		return gridText;
 	}
-
+	
+	public String inspectCell(Location loc) {
+		return getCell(loc).fullCellText();
+	}
+	
+	public void assignCell(String input) {
+		String assignment = input.split(" ", 3)[2].substring(1, input.split(" ", 3)[2].length()-1);
+		Location loc = new SpreadsheetLocation(input.split(" ")[0].toUpperCase());
+		cells[loc.getRow()][loc.getCol()] = new TextCell(assignment);
+	}
+	
+	public void clearSheet() {
+		for (int i = 0; i < getRows(); i++) {
+			for (int j = 0; j < getCols(); j++) {
+				cells[i][j] = new EmptyCell();
+			}
+		}
+	}
+	
+	public void clearCell(Location loc) {
+		cells[loc.getRow()][loc.getCol()] = new EmptyCell();
+	}
 }
