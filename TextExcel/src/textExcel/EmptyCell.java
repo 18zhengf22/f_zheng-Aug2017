@@ -1,9 +1,9 @@
 package textExcel;
 
 public class EmptyCell implements Cell {
-	private String cellContents;
+	private String cellEmpty;
 	public EmptyCell() {
-		cellContents = "";
+		cellEmpty = "";
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class TextCell implements Cell {
 		for(int i = cellText.length(); i < 10; i++) {
 			temp += " ";
 		}
-		return temp.substring(0,10);
+		return temp.substring(0, 10);
 	}
 
 	@Override
