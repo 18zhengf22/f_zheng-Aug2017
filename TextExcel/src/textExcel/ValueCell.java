@@ -2,7 +2,8 @@ package textExcel;
 
 public class ValueCell extends RealCell {
 	private String input;
-	//constructor
+
+	// constructor
 	public ValueCell(String input) {
 		super(input);
 		this.input = input;
@@ -10,12 +11,16 @@ public class ValueCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		return null;
+		String temp = input;
+		for (int i = input.length(); i < 10; i++) {
+			temp += " ";
+		}
+		return temp.substring(0, 10);
 	}
 
 	@Override
 	public String fullCellText() {
-		return input;
+		return getDoubleValue() + "";
 	}
 
 	@Override

@@ -10,18 +10,21 @@ public class PercentCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		// TODO Auto-generated method stub
-		return null;
+		String temp = (int) Double.parseDouble(input.substring(0, input.length()-1)) + "%";
+		for(int i = temp.length(); i < 10; i++) {
+			temp += " ";
+		}
+		return temp.substring(0, 10);
 	}
 
 	@Override
 	public String fullCellText() {
-		return input;
+		return getDoubleValue() + "";
 	}
 
 	@Override
 	public double getDoubleValue() {
-		return Double.parseDouble(input.substring(0, input.length()-1));
+		return Double.parseDouble(input.substring(0, input.length()-1)) / 100.0;
 	}
 
 }
