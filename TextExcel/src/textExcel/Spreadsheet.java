@@ -29,11 +29,17 @@ public class Spreadsheet implements Grid {
 			return getGridText();
 		} else
 
-		// assignment of string values
+		// string assignment
 		if (command.contains("=") && command.endsWith("\"")) {
 			assignCell(command);
 			return getGridText();
 		} else
+		
+		// formula assignment
+		if (command.contains("=") && command.endsWith(" )")) {
+			assignCell(command);
+			return getGridText();
+		}
 
 		// real value assignment
 		if (command.contains("=")) {
@@ -113,6 +119,9 @@ public class Spreadsheet implements Grid {
 		} else if (input.endsWith("%")) {
 			String assignment = input.split(" ", 3)[2];
 			cells[loc.getRow()][loc.getCol()] = new PercentCell(assignment);
+		} else if (input.endsWith(" )")) {
+			String assignment = input.split(" ", 3)[2];
+			cells[loc.getRow()][loc.getCol()] = new FormulaCell(assignment);
 		} else {
 			String assignment = input.split(" ", 3)[2];
 			cells[loc.getRow()][loc.getCol()] = new ValueCell(assignment);

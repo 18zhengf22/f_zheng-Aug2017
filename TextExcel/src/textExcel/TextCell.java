@@ -1,9 +1,10 @@
 package textExcel;
 
 public class TextCell implements Cell {
-	
+
 	private String cellText;
-	//constructor
+
+	// constructor
 	public TextCell(String cellText) {
 		this.cellText = cellText;
 	}
@@ -11,7 +12,7 @@ public class TextCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 		String temp = cellText;
-		for(int i = temp.length(); i < 10; i++) {
+		for (int i = temp.length(); i < 10; i++) {
 			temp += " ";
 		}
 		return temp.substring(0, 10);

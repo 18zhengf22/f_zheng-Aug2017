@@ -2,6 +2,7 @@ package textExcel;
 
 public class EmptyCell implements Cell {
 	private String cellEmpty;
+
 	public EmptyCell() {
 		cellEmpty = "";
 	}

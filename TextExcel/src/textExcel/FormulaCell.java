@@ -1,26 +1,28 @@
 package textExcel;
 
 public class FormulaCell extends RealCell {
+	private String input;
 
+	// constructor
 	public FormulaCell(String input) {
 		super(input);
+		this.input = input;
 	}
 
 	@Override
 	public String abbreviatedCellText() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Formula...";
 	}
 
 	@Override
 	public String fullCellText() {
-		// TODO Auto-generated method stub
-		return null;
+		return input;
 	}
 
 	@Override
 	public double getDoubleValue() {
-		// TODO Auto-generated method stub
+		String formula = input.substring(2, input.length()-2);
+		
 		return 0;
 	}
 
