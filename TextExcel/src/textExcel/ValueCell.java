@@ -11,8 +11,8 @@ public class ValueCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		String temp = input;
-		for (int i = input.length(); i < 10; i++) {
+		String temp = Double.parseDouble(input) + "";
+		for (int i = temp.length(); i < 10; i++) {
 			temp += " ";
 		}
 		return temp.substring(0, 10);
@@ -20,7 +20,7 @@ public class ValueCell extends RealCell {
 
 	@Override
 	public String fullCellText() {
-		return getDoubleValue() + "";
+		return input;
 	}
 
 	@Override

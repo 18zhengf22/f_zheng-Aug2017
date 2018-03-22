@@ -110,7 +110,7 @@ public class Spreadsheet implements Grid {
 		if (input.endsWith("\"")) {
 			String assignment = input.split(" ", 3)[2].substring(1, input.split(" ", 3)[2].length() - 1);
 			cells[loc.getRow()][loc.getCol()] = new TextCell(assignment);
-		} else if (input.endsWith("\"")) {
+		} else if (input.endsWith("%")) {
 			String assignment = input.split(" ", 3)[2];
 			cells[loc.getRow()][loc.getCol()] = new PercentCell(assignment);
 		} else {

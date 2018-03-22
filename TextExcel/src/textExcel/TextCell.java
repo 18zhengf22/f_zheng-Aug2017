@@ -11,7 +11,7 @@ public class TextCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 		String temp = cellText;
-		for(int i = cellText.length(); i < 10; i++) {
+		for(int i = temp.length(); i < 10; i++) {
 			temp += " ";
 		}
 		return temp.substring(0, 10);
