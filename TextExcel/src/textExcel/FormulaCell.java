@@ -11,7 +11,7 @@ public class FormulaCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		return "Formula...";
+		return getDoubleValue() + "";
 	}
 
 	@Override
@@ -31,21 +31,22 @@ public class FormulaCell extends RealCell {
 			operators[count] = arrFormula[i + 1];
 			count++;
 		}
-		double result = 0;
+		double temp = 0;
 		count = 0;
 		for (int i = 0; i < numbers.length - 1; i++) {
+			temp = numbers[i];
 			if (operators[count].equals("+")) {
-				result += (numbers[i] + numbers[i + 1]);
+				temp += numbers[i + 1];
 			} else if (operators[count].equals("-")) {
-				result += (numbers[i] - numbers[i - 1]);
+				temp -= numbers[i - 1];
 			} else if (operators[count].equals("*")) {
-				result += (numbers[i] * numbers[i + 1]);
-			} else {
-				result += (numbers[i] / numbers[i + 1]);
+				temp *= numbers[i + 1];
+			} else if (operators[count].equals("/")) {
+				temp /= numbers[i + 1];
 			}
 			count++;
 		}
-		return 0;
+		return temp;
 	}
 
 }

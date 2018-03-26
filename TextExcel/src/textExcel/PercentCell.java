@@ -6,6 +6,7 @@ public class PercentCell extends RealCell {
 	// constructor
 	public PercentCell(String input) {
 		super(input);
+		this.input = input;
 	}
 
 	@Override

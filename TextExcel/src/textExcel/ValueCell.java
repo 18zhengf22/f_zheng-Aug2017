@@ -6,6 +6,7 @@ public class ValueCell extends RealCell {
 	// constructor
 	public ValueCell(String input) {
 		super(input);
+		this.input = input;
 	}
 
 	@Override
