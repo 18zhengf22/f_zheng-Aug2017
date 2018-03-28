@@ -1,5 +1,7 @@
 package textExcel;
 
+import java.util.ArrayList;
+
 public class FormulaCell extends RealCell {
 	private String input;
 
@@ -11,7 +13,11 @@ public class FormulaCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		return getDoubleValue() + "";
+		String temp = getDoubleValue() + "";
+		for (int i = temp.length(); i < 10; i++) {
+			temp += " ";
+		}
+		return temp.substring(0, 10);
 	}
 
 	@Override
@@ -23,28 +29,25 @@ public class FormulaCell extends RealCell {
 	public double getDoubleValue() {
 		String formula = input.substring(2, input.length() - 2);
 		String[] arrFormula = formula.split(" ");
-		Double[] numbers = new Double[arrFormula.length / 2];
-		String[] operators = new String[arrFormula.length / 2];
-		int count = 0;
-		for (int i = 0; i < arrFormula.length / 2; i += 2) {
-			numbers[count] = Double.parseDouble(arrFormula[i]);
-			operators[count] = arrFormula[i + 1];
-			count++;
-		}
-		double temp = 0;
-		count = 0;
-		for (int i = 0; i < numbers.length - 1; i++) {
-			temp = numbers[i];
-			if (operators[count].equals("+")) {
-				temp += numbers[i + 1];
-			} else if (operators[count].equals("-")) {
-				temp -= numbers[i - 1];
-			} else if (operators[count].equals("*")) {
-				temp *= numbers[i + 1];
-			} else if (operators[count].equals("/")) {
-				temp /= numbers[i + 1];
+		ArrayList<Double> numbers = new ArrayList<Double>();
+		ArrayList<String> operators = new ArrayList<String>();
+		for (int i = 0; i < arrFormula.length; i += 2) {
+			numbers.add(Double.parseDouble(arrFormula[i]));
+			if (i < arrFormula.length - 1) {
+				operators.add(arrFormula[i + 1]);
 			}
-			count++;
+		}
+		double temp = numbers.get(0);
+		for (int i = 0; i < operators.size(); i++) {
+			if (operators.get(i).equals("+")) {
+				temp += numbers.get(i + 1);
+			} else if (operators.get(i).equals("-")) {
+				temp -= numbers.get(i + 1);
+			} else if (operators.get(i).equals("*")) {
+				temp *= numbers.get(i + 1);
+			} else if (operators.get(i).equals("/")) {
+				temp /= numbers.get(i + 1);
+			}
 		}
 		return temp;
 	}

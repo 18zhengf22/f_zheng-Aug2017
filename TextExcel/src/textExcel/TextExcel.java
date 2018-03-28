@@ -8,9 +8,11 @@ public class TextExcel {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to TextExcel! To quit, type \"quit\".");
 		Spreadsheet spreadsheet = new Spreadsheet();
 		boolean done = true;
 		while (done) {
+			System.out.println("Enter command.");
 			String input = scanner.nextLine();
 			if (input.equals("quit")) {
 				done = false;

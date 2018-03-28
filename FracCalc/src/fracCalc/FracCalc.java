@@ -12,7 +12,7 @@ public class FracCalc {
 	
     public static void main(String[] args) {
         // TODO: Read the input from the user and call produceAnswer with an equation
-    		Scanner userInput = new Scanner(System.in);
+    	Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter expression. To quit, type \"quit\".");
 		boolean done = true;
 		while(done) {
