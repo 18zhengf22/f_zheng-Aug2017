@@ -40,7 +40,7 @@ public class FormulaCell extends RealCell {
 		}
 		for (int i = 0; i < operands.size(); i++) {
 			if (Character.isLetter(operands.get(i).charAt(0))) {
-				//look at the thing and make location of it and then inspectCell
+				//look at the thing and make location of it and then do inspectCell
 			} else {
 				numbers.add(Double.parseDouble(operands.get(i)));
 			}
