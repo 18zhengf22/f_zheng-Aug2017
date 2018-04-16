@@ -2,7 +2,8 @@ package textExcel;
 
 public class PercentCell extends RealCell {
 	private String input;
-	//constructor
+
+	// constructor
 	public PercentCell(String input) {
 		super(input);
 		this.input = input;
@@ -10,8 +11,8 @@ public class PercentCell extends RealCell {
 
 	@Override
 	public String abbreviatedCellText() {
-		String temp = (int) Double.parseDouble(input.substring(0, input.length()-1)) + "%";
-		for(int i = temp.length(); i < 10; i++) {
+		String temp = (int) Double.parseDouble(input.substring(0, input.length() - 1)) + "%";
+		for (int i = temp.length(); i < 10; i++) {
 			temp += " ";
 		}
 		return temp.substring(0, 10);
@@ -24,7 +25,7 @@ public class PercentCell extends RealCell {
 
 	@Override
 	public double getDoubleValue() {
-		return Double.parseDouble(input.substring(0, input.length()-1)) / 100.0;
+		return Double.parseDouble(input.substring(0, input.length() - 1)) / 100.0;
 	}
 
 }
