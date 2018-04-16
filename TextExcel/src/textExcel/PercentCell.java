@@ -1,12 +1,10 @@
 package textExcel;
 
 public class PercentCell extends RealCell {
-	private String input;
 
 	// constructor
 	public PercentCell(String input) {
 		super(input);
-		this.input = input;
 	}
 
 	@Override

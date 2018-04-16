@@ -3,7 +3,7 @@ package textExcel;
 // Update this file with your own code.
 
 public class Spreadsheet implements Grid {
-	Cell[][] cells;
+	private Cell[][] cells;
 
 	// constructor
 	public Spreadsheet() {
@@ -24,19 +24,19 @@ public class Spreadsheet implements Grid {
 		} else
 
 		// percent assignment
-		if (command.contains("=") && command.endsWith("%")) {
+		if (command.endsWith("%")) {
 			assignCell(command);
 			return getGridText();
 		} else
 
 		// string assignment
-		if (command.contains("=") && command.endsWith("\"")) {
+		if (command.endsWith("\"")) {
 			assignCell(command);
 			return getGridText();
 		} else
-		
+
 		// formula assignment
-		if (command.contains("=") && command.endsWith(" )")) {
+		if (command.endsWith(" )")) {
 			assignCell(command);
 			return getGridText();
 		}
@@ -61,8 +61,6 @@ public class Spreadsheet implements Grid {
 		} else {
 			return "";
 		}
-
-		// real value assignment
 
 	}
 
@@ -113,17 +111,15 @@ public class Spreadsheet implements Grid {
 
 	public void assignCell(String input) {
 		Location loc = new SpreadsheetLocation(input.split(" ")[0].toUpperCase());
+		String assignment = input.split(" ", 3)[2];
 		if (input.endsWith("\"")) {
-			String assignment = input.split(" ", 3)[2].substring(1, input.split(" ", 3)[2].length() - 1);
+			assignment = input.split(" ", 3)[2].substring(1, input.split(" ", 3)[2].length() - 1);
 			cells[loc.getRow()][loc.getCol()] = new TextCell(assignment);
 		} else if (input.endsWith("%")) {
-			String assignment = input.split(" ", 3)[2];
 			cells[loc.getRow()][loc.getCol()] = new PercentCell(assignment);
 		} else if (input.endsWith(" )")) {
-			String assignment = input.split(" ", 3)[2];
-			cells[loc.getRow()][loc.getCol()] = new FormulaCell(assignment);
+			cells[loc.getRow()][loc.getCol()] = new FormulaCell(assignment, this);
 		} else {
-			String assignment = input.split(" ", 3)[2];
 			cells[loc.getRow()][loc.getCol()] = new ValueCell(assignment);
 		}
 	}

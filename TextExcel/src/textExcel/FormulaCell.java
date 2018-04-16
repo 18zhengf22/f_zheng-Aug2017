@@ -3,12 +3,13 @@ package textExcel;
 import java.util.ArrayList;
 
 public class FormulaCell extends RealCell {
-	private String input;
+	
+	private Spreadsheet spreadsheet;
 
 	// constructor
-	public FormulaCell(String input) {
+	public FormulaCell(String input, Spreadsheet spreadsheet) {
 		super(input);
-		this.input = input;
+		this.spreadsheet = spreadsheet;
 	}
 
 	@Override
@@ -29,9 +30,9 @@ public class FormulaCell extends RealCell {
 	public double getDoubleValue() {
 		String formula = input.substring(2, input.length() - 2);
 		String[] arrFormula = formula.split(" ");
-		ArrayList<String> operands = new ArrayList<String>(); //ArrayList to store operands (numbers, cell references)
-		ArrayList<String> operators = new ArrayList<String>(); //ArrayList to store operators (+, -, *, /)
-		ArrayList<Double> numbers = new ArrayList<Double>(); //ArrayList to store numeric value of operands
+		ArrayList<String> operands = new ArrayList<String>(); // ArrayList to store operands (numbers, cell references)
+		ArrayList<String> operators = new ArrayList<String>(); // ArrayList to store operators (+, -, *, /)
+		ArrayList<Double> numbers = new ArrayList<Double>(); // ArrayList to store numeric value of operands
 		for (int i = 0; i < arrFormula.length; i += 2) {
 			operands.add(arrFormula[i]);
 			if (i < arrFormula.length - 1) {
@@ -40,8 +41,8 @@ public class FormulaCell extends RealCell {
 		}
 		for (int i = 0; i < operands.size(); i++) {
 			if (Character.isLetter(operands.get(i).charAt(0))) {
-				Location loc = new SpreadsheetLocation(operands.get(i));
-				//get the stuff in that location
+				//Cell c = spreadsheet.getCell((new SpreadsheetLocation(operands.get(i))));
+				//Double.parseDouble(c.fullCellText());
 			} else {
 				numbers.add(Double.parseDouble(operands.get(i)));
 			}
