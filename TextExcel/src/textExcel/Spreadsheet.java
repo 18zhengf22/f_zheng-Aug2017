@@ -8,11 +8,7 @@ public class Spreadsheet implements Grid {
 	// constructor
 	public Spreadsheet() {
 		cells = new Cell[getRows()][getCols()];
-		for (int i = 0; i < getRows(); i++) {
-			for (int j = 0; j < getCols(); j++) {
-				cells[i][j] = new EmptyCell();
-			}
-		}
+		clearSheet();
 	}
 
 	@Override
@@ -77,6 +73,10 @@ public class Spreadsheet implements Grid {
 	@Override
 	public Cell getCell(Location loc) {
 		return cells[loc.getRow()][loc.getCol()];
+	}
+	
+	public Cell getCell(int i, int j) { // used in FormulaCell's SUM
+		return cells[i][j];
 	}
 
 	@Override
