@@ -1,6 +1,11 @@
-package textExcel;
+/*Frank Zheng
+ *APCS2
+ *March - April 2017 but actually March - May for me :(
+ *TextExcel
+ *Spreadsheet program that can do some math
+ */
 
-// Update this file with your own code.
+package textExcel;
 
 public class Spreadsheet implements Grid {
 	private Cell[][] cells;

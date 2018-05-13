@@ -1,3 +1,10 @@
+/*Frank Zheng
+ *APCS2
+ *March - April 2017 but actually March - May for me :(
+ *TextExcel
+ *Spreadsheet program that can do some math
+ */
+
 package textExcel;
 
 public class PercentCell extends RealCell {
